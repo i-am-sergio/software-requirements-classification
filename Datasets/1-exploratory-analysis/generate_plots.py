@@ -16,7 +16,7 @@ def obtener_conteos(df, nombre_columna_clase):
 nfr_df = pd.read_csv('./data/nfr.csv', sep=',', header=0, quotechar='"')
 conteos_nfr = obtener_conteos(nfr_df, 'class')
 
-promise_exp_df = pd.read_csv('./data/PROMISE_exp.csv', sep=',', header=0, quotechar='"', doublequote=True)
+promise_exp_df = pd.read_csv('../ForTraining/PROMISE_exp.csv', sep=',', header=0, quotechar='"', doublequote=True)
 conteos_promise_exp = obtener_conteos(promise_exp_df, '_class_')
 
 # Calcular valores para la gráfica de todas las clases
@@ -27,8 +27,8 @@ indices = np.arange(len(clases))
 ancho_barra = 0.45
 
 # Crear gráfica de barras para todas las clases
-barras_nfr = plt.bar(indices, valores_nfr, ancho_barra, label='NFR')
-barras_diferencias = plt.bar(indices, diferencias_promise_exp, ancho_barra, bottom=valores_nfr, label='PROMISE_exp')
+barras_nfr = plt.bar(indices, valores_nfr, ancho_barra,color='mediumpurple', label='NFR',)
+barras_diferencias = plt.bar(indices, diferencias_promise_exp, ancho_barra, color='rebeccapurple',bottom=valores_nfr, label='PROMISE_exp')
 
 # Configurar la gráfica
 plt.title('Distribución de clases en PROMISE_exp')
@@ -56,8 +56,8 @@ diferencias_promise_exp = [
 indices = np.arange(2)
 ancho_barra = 0.6
 
-barras_nfr = plt.bar(indices, valores_nfr, ancho_barra, label='NFR')
-barras_diferencias = plt.bar(indices, diferencias_promise_exp, ancho_barra, bottom=valores_nfr, label='PROMISE_exp')
+barras_nfr = plt.bar(indices, valores_nfr, ancho_barra, label='NFR', color='mediumpurple')
+barras_diferencias = plt.bar(indices, diferencias_promise_exp, ancho_barra, bottom=valores_nfr, label='PROMISE_exp', color='rebeccapurple')
 
 # Configurar la gráfica
 plt.title('Distribución de clases en PROMISE_exp - FR vs NFR')

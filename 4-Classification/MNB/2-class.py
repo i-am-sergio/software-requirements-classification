@@ -22,7 +22,7 @@ def evaluate_binary_model(dataset, output_filename):
     training_results = [0, 0, 0, 0]
     test_results = [0, 0, 0, 0]
 
-    df = utils.load_dataset('../../4-feature-selection/output', dataset, False)
+    df = utils.load_dataset('../../3-Feature-selection/output', dataset, False)
     random_split = utils.cv_split(df, K)
 
     for j in range(K):

@@ -42,7 +42,7 @@ def evaluate_binary_model(dataset, output_filename):
     test_results = [0, 0, 0, 0]  # [precisión, recall, f1_score, exactitud] en prueba
 
     # Cargar el dataset
-    df = utils.load_dataset('../../4-feature-selection/output', dataset, True)
+    df = utils.load_dataset('../../3-Feature-selection/output', dataset, True)
     random_split = utils.cv_split(df, K)  # Dividir el dataset en K folds
 
     # Validación cruzada
