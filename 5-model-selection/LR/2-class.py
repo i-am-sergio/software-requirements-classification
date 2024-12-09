@@ -27,7 +27,7 @@ def model_select(dataset):
     output_info = f'** {dataset} **\n'
     
     # Cargar el dataset utilizando una función personalizada de utils
-    df = utils.load_dataset('../../4-feature-selection/output', dataset, True)
+    df = utils.load_dataset('../../3-Feature-selection/output', dataset, True)
 
     print(df.head(10))
     print(df.shape)

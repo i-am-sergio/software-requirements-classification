@@ -14,7 +14,7 @@ label_encoder.fit(class_names)
 
 def model_select(dataset):
     output_info = '** {} **\n'.format(dataset)
-    df = utils.load_dataset('../../4-feature-selection/output', dataset, True)
+    df = utils.load_dataset('../../3-Feature-selection/output', dataset, True)
 
     K = 10  # k-fold cross validation
     hyperparam1_candidates = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500]  # this is too many models; consider limiting search to desired pairs

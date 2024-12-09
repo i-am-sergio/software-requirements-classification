@@ -13,7 +13,7 @@ label_encoder.fit(class_names)
 
 def model_select(dataset):
     output_info = '** {} **\n'.format(dataset)
-    df = utils.load_dataset('../../4-feature-selection/output', dataset, False)
+    df = utils.load_dataset('../../3-Feature-selection/output', dataset, False)
 
     K = 10  # k-fold cross validation
     hyperparam_candidates = [0, 0.1, 0.5, 1, 5, 10, 50, 100]
