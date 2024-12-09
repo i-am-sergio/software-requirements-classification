@@ -4,8 +4,8 @@ import os, sys
 sys.path.insert(0, os.path.abspath('..'))
 from utils import utils
 
-bow_df = pd.read_csv('../3-vectorization/output/dataset_bow.csv', sep=',', header=0)
-tfidf_df = pd.read_csv('../3-vectorization/output/dataset_tfidf.csv', sep=',', header=0)
+bow_df = pd.read_csv('../2-Vectorization/output/dataset_bow.csv', sep=',', header=0)
+tfidf_df = pd.read_csv('../2-Vectorization/output/dataset_tfidf.csv', sep=',', header=0)
 
 # *** Creación de datasets con 12 clases ***
 # No se realizan cambios en el conjunto, simplemente se renombran para mantener consistencia

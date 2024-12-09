@@ -15,7 +15,7 @@ nltk.download('averaged_perceptron_tagger')  # Etiquetado gramatical (POS taggin
 
 # Leer el archivo CSV con los datos de requisitos
 df = pd.read_csv(
-    '../1-exploratory-analysis/data/PROMISE_exp.csv',  # Ruta al archivo CSV
+    '../Datasets/ForTraining/PROMISE_exp.csv',  # Ruta al archivo CSV
     sep=',',  # Separador de columnas
     header=0,  # Indica que la primera fila contiene los encabezados
     quotechar='"',  # Carácter para manejar comillas

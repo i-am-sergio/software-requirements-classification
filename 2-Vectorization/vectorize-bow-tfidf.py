@@ -4,7 +4,7 @@ import pandas as pd
 
 # Leer el archivo CSV normalizado de la etapa previa
 df = pd.read_csv(
-    '../2-preprocessing/output/dataset_normalized.csv',  # Ruta al archivo de entrada
+    '../1-Preprocessing/output/dataset_normalized.csv',  # Ruta al archivo de entrada
     sep=',',  # Separador de columnas
     header=0,  # Indica que la primera fila contiene los encabezados
     quotechar='"',  # Carácter para manejar comillas
