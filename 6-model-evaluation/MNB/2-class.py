@@ -13,7 +13,7 @@ class_names = ['F', 'NF']
 label_encoder = LabelEncoder()
 label_encoder.fit(class_names)
 
-SELECTED_ALPHA = 0
+SELECTED_ALPHA = 1.0
 
 def evaluate_binary_model(dataset, output_filename):
     output_info = '** {} **'.format(dataset)

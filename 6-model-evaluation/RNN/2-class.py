@@ -70,6 +70,11 @@ def evaluate_binary_model(output_filename_base, mode, param_epochs, param_dropou
 
         model.fit(x=X_train, y=Y_train, epochs=param_epochs, verbose=1)
 
+        # Guardar el modelo entrenado
+        model_filename = 'models/{}_{}.h5'.format(output_filename_base, mode)  # Establecer el nombre del archivo
+        model.save(model_filename)  # Guardar el modelo en formato H5
+        print(f'Model saved to {model_filename}')
+
         # evaluation on training dataset
         X_test = X_train
         training_prediction = model.predict(X_test)
@@ -111,6 +116,8 @@ def evaluate_binary_model(output_filename_base, mode, param_epochs, param_dropou
     output.close()
     return output_info
 
+# LSTM: long short-term memory
 lstm = evaluate_binary_model('2-w2v', 'lstm', 100, 0.9, 0.9, 10, 0.3)
+# GRU: gated recurrent unit
 gru = evaluate_binary_model('2-w2v', 'gru', 100, 0.9, 0.9, 10, 0.3)
 print('{}\n\n{}'.format(lstm, gru))

@@ -34,7 +34,6 @@ def evaluate_binary_model(dataset, output_filename):
     Returns:
         str: Resumen de las métricas obtenidas durante la evaluación.
     """
-    global trained_model
     output_info = f'** {dataset} **'
     output = open(f'../results/{output_filename}.txt', "w")
 
@@ -57,10 +56,6 @@ def evaluate_binary_model(dataset, output_filename):
         Y_train = label_encoder.transform(training['_class_'])
         model = LogisticRegression(C=SELECTED_C, class_weight='balanced')
         model.fit(X_train, Y_train)  # Entrenar el modelo
-
-        # Guardar el modelo entrenado en el último pliegue
-        if j == K - 1:
-            trained_model = model
 
         # Evaluar en el conjunto de entrenamiento
         X_test = X_train
