@@ -5,4 +5,7 @@ GoogleNews-vectors-negative300.bin
 venv
 3.5-model-selection
 
-4-Classification/GBDT/**
+4-Classification/GBDT
+4-Classification/NN
+
+python-deps-list.txt
