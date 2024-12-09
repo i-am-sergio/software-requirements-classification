@@ -45,11 +45,14 @@ def evaluate_binary_model(dataset, output_filename):
     df = utils.load_dataset('../../3-Feature-selection/output', dataset, True)
     random_split = utils.cv_split(df, K)  # Dividir el dataset en K folds
 
+    print(len(random_split))
+    print(random_split[0].shape)
+
     # Validación cruzada
     for j in range(K):
         test = random_split[j]  # Fold actual como conjunto de prueba
         training_list = random_split[:j] + random_split[j+1:]  # Folds restantes como conjunto de entrenamiento
-        training = pd.concat(training_list)
+        training = pd.concat(training_list) # Concatenar los DataFrames de entrenamiento
 
         # Preparar datos de entrenamiento
         X_train = training.drop('_class_', axis=1)
@@ -70,6 +73,15 @@ def evaluate_binary_model(dataset, output_filename):
         current_results = utils.estimate_model_performance(model, X_test, Y_test)
         for i in range(len(test_results)):
             test_results[i] += current_results[i]
+
+        # Evaluar con un requisito de prueba
+        # test_req = test.iloc[[0]] # Seleccionar un requisito de prueba
+        # X_test_req = test_req.drop('_class_', axis=1)
+        # Y_test_req = label_encoder.transform(test_req['_class_'])
+        # prediction = model.predict(X_test_req)
+
+        # output_info += f'\n\nRequisito de prueba: {test_req.index[0]}\n'
+        # output_info += f'Clase real: {label_encoder.inverse_transform(Y_test_req)[0]}\n'        
 
     # Promediar resultados
     for i in range(len(test_results)):

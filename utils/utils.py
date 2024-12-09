@@ -13,11 +13,10 @@ def load_dataset(dataset_dir, dataset, pca_version=True):
 def cv_split(df, K):
     ###Returns training and test DataFrame splits for k-fold cross validation###
 
-    # copy the dataframe with randomized rows
+    # hace una copia del DataFrame y lo reordena aleatoriamente
     clone_df = df.sample(frac=1).reset_index(drop=True)
 
-    # split and return
-    return np.array_split(clone_df, K)
+    return np.array_split(clone_df, K) # retorna una lista de K DataFrames
 
 def load_dataset_word2vec(word2vec_model, dataset_dir, mode, verbose=True):
     df = pd.read_csv('{}/dataset_normalized.csv'.format(dataset_dir), sep=',', header=0)
@@ -80,6 +79,10 @@ def estimate_model_performance(model, X_test, Y_test):
     accuracy = accuracy_score(Y_test, predictions)
 
     return (metrics_prf[0], metrics_prf[1], metrics_prf[2], accuracy)
+
+def prediction_binary(model, X_test, label_encoder):
+    predictions = model.predict(X_test)
+    return label_encoder.inverse_transform(predictions)
 
 def binarize_class_variable(entry):
     return 'F' if entry == 'F' else 'NF'
