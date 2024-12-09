@@ -62,9 +62,11 @@ def load_dataset_word2vec(word2vec_model, dataset_dir, mode, verbose=True):
     # build embeddings matrix
     tokens_count = len(tokens_list)
     embeddings_matrix = np.zeros((tokens_count, WORD2VEC_EMBEDDINGS_VECTOR_SIZE))
+    print("---> Llego aqui...")
     for i in range(1, tokens_count):
         token = tokens_list[i]
-        if token in w2v_model.vocab:
+        # if token in w2v_model.vocab:
+        if token in w2v_model.key_to_index:
             embeddings_matrix[i, :] = w2v_model[token]
         # else it is a zero vector; there is ongoing research about finding other approaches
 
