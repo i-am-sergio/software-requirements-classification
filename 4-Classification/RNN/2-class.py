@@ -30,7 +30,7 @@ def evaluate_binary_model(output_filename_base, mode, param_epochs, param_dropou
     training_results_steps = np.zeros((K, 4))
     test_results_steps = np.zeros((K, 4))
 
-    embeddings_matrix, max_sequence_length, dataset = utils.load_dataset_word2vec('./GoogleNews-vectors-negative300.bin', '../../2-preprocessing/output', '2-class')
+    embeddings_matrix, max_sequence_length, dataset = utils.load_dataset_word2vec('./GoogleNews-vectors-negative300.bin', '../../1-Preprocessing/output', '2-class')
     vocabulary_size = embeddings_matrix.shape[0] - 1 # embeddings_matrix has one extra row for unused zero index due to mask_zero in Embedding
     random_split = utils.cv_split(dataset, K)
 
@@ -61,7 +61,7 @@ def evaluate_binary_model(output_filename_base, mode, param_epochs, param_dropou
             recurrent_layer = GRU(utils.WORD2VEC_EMBEDDINGS_VECTOR_SIZE, dropout=param_dropout)
         model.add(
             Bidirectional(recurrent_layer))
-        model.add(Dropout(param_dense_dropout))
+        model.add(Dropout(param_dense_dropout)) # ayuda a prevenir overfitting
         model.add(
             Dense(param_dense_nodes, activation=LeakyReLU(alpha=param_leaky_relu_alpha)))
         model.add(
